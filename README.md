@@ -46,7 +46,8 @@ y = {"target_table": "CONDITION_OCCURRENCE", "target_field": "condition_concept_
 ├── notebooks/                    Lab 1.5 and 1.6 Colab notebooks
 └── scripts/
     ├── generate_dataset.py       builds data/omop_mapping_dataset.jsonl and data/test_set.json
-    └── build_notebooks.py        builds the notebooks from prompts/ and data/
+    ├── build_notebooks.py        builds the notebooks from prompts/ and data/
+    └── update_diagram_links.py   makes the .puml diagrams visible on GitHub (docs image links)
 ```
 
 ## Running the notebooks

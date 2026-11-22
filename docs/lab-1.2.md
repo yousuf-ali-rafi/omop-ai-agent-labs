@@ -175,7 +175,9 @@ Link: https://colab.research.google.com/drive/15r2XMoSW-xx3WPewuuZK3zUkfzGJBMF4
 **AI components:** step 2 (LLM-based concept mapping, developed in Labs 1.4–1.6) and step 6 (machine-learning prediction).
 All other steps are deterministic rules or standard OHDSI tools.
 
-A clean digital version is in [`diagrams/00_process_model.puml`](../diagrams/00_process_model.puml).
+Digital version (source: [`diagrams/00_process_model.puml`](../diagrams/00_process_model.puml)):
+
+![Process model](https://www.plantuml.com/plantuml/svg/RLFBRjim4BppAnRj9IbgnMyK0Lh4g5mag0mhjekqW023bbOoOOfKIIg9R_s7_c6_f4j9QNJeGOAMt9tPdHtTMCUDgqi9m-6-CZf5Q_Ubpb0o9vn4Y0rAKGh5pHcwUsZkuS-ltr1R19t3uWw40dT4_rXXuIBY1nW5uqjcJq9LtF0ICinvBTqEdzr2YaALg1oaz4B33AQEguButcpu4wHIA95o2LRNXYWJfKjTxKVmbHS-QNcxwOx6i3qh8kLTF85e1oUHAJo3mK9OPyvlW5lOB1xwBAC0Gkuur2f3GngeJAWYKGz7uN333mVX_BIve4QAzucYZ8A-mF63HDi0ngC-tZZm8gHQfLWvA7bLDNWNKRG2Nj2Gbudw3X-xWU2HoneJTVOddfoRxALuBx8MVmnlluJB-OT5dsVIzZtuMNCft1boBkM1fwT4rSgpOWQ3Jpqe62RgX5Z1ktrBlM-eMuP97taQm78NWTGyWulTO7iVKSlhrJg6p-4A7cV1D56hBT0vRD4yecanfdsCMQVgVTTToEtne6auKc9z6sxl8BmFBzl2MRzmtiXt1Qk8PCTCf4veHKMtYt2vXJYAE_agxeItJOxSrSORmqkeQvVg4c5uDMgnv_-JReEMx6SXruQiOP6Rz4YxJnJftpbESDKkT_rjnnXP1WP654T7ajAwur4l73DQq23JJyf74nPFO20nR-wcB9w-HZCMprupvuow-mVZUUWsgAl0Oy8rJOQPN-XredBn_E8aooIIYp9e2Xd03vHIFy51FwCb1HhlbPLM98vbbDYcinjwqS_D_W80 "00_process_model")
 
 ## 5. Hand-drawn diagram
 

@@ -10,7 +10,7 @@ Do the steps **in this order**. Tick each box when it is done. Total time: about
 | 1 | Upload to GitHub | all | – | ✅ Done |
 | 2 | Read the Lab 1.2 report | 1.2 | 10 min | ☐ |
 | 3 | Hand-draw the process model | 1.2 | 15 min | ☐ |
-| 4 | Turn diagrams into pictures | 1.3 | 15 min | ☐ |
+| 4 | Diagrams visible on GitHub | 1.3 | – | ✅ Done |
 | 5 | Run the Gemini notebook | 1.5 | 20 min | ☐ |
 | 6 | Run the RAG notebook | 1.6 | 20 min | ☐ |
 | 7 | Upload everything and do the final check | all | 10 min | ☐ |
@@ -39,16 +39,15 @@ You do not need to write anything in this step.
 
 ---
 
-## Step 4 — Turn the diagrams into pictures (15 min)
+## Step 4 — Diagrams (✅ already done)
 
-The `diagrams/` folder has 6 `.puml` files. Do this for **each** one:
+GitHub cannot show `.puml` files as pictures. So the diagrams in `docs/lab-1.2.md` and `docs/lab-1.3.md`
+are now drawn automatically by the PlantUML website. You do not need to make PNG files.
 
-1. Open the `.puml` file in Notepad and copy everything in it.
-2. Go to https://editor.plantuml.com and paste the text. The picture appears.
-3. Download it as **PNG** with the same name, e.g. `01_use_case.puml` → `01_use_case.png`.
-4. Save the PNG in `diagrams/`.
-
-If you see an error: paste the code and the error into ChatGPT, Gemini or Claude and ask for a fix.
+Only if you **change** a `.puml` file, run this command afterwards:
+```bash
+python scripts/update_diagram_links.py
+```
 
 ---
 
@@ -109,7 +108,8 @@ git push
 
 Then open your GitHub page and check:
 
-- [ ] `diagrams/` has 6 `.puml` + 6 `.png` + `process_model_handdrawn.jpg`
+- [ ] Diagrams show as pictures in `docs/lab-1.2.md` and `docs/lab-1.3.md`
+- [ ] `diagrams/process_model_handdrawn.jpg` is uploaded
 - [ ] Both notebooks show their printed results and charts on GitHub
 - [ ] No `[__ %]` is left in the notebooks or in `docs/lab-1.5.md` and `docs/lab-1.6.md`
 - [ ] Both prompt files contain the real Gemini answers
