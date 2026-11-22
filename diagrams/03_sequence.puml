@@ -1,0 +1,37 @@
+@startuml 03_sequence
+title OMOP-MapAgent – Sequence diagram: mapping one source value X to y
+autonumber
+actor "ETL Engineer" as Eng
+participant "ETL job\n(T-SQL / Python)" as ETL
+participant "Data\nUnderstanding" as DU
+participant "Retriever" as RET
+database "ChromaDB" as VDB
+participant "Prompt\nBuilder" as PB
+participant "Gemini LLM" as LLM #FDE68A
+participant "Validator" as VAL
+database "ATHENA\nvocabulary" as VOC
+database "OMOP CDM" as CDM
+
+Eng -> ETL : start mapping run (omop_3)
+loop for each distinct source value X
+  ETL -> DU : X = {database, source_table,\nsource_field, source_value}
+  DU -> DU : detect domain, clean value,\nflag garbage / local codes
+  DU -> RET : X + profile
+  RET -> VDB : query(embedding(X), n_results = 3)
+  VDB --> RET : 3 most similar (X, y) pairs
+  RET -> PB : X + 3 examples
+  PB -> LLM : system prompt + augmented user prompt
+  LLM --> PB : JSON {cleaned_value, reasoning,\nconcept_id, ..., confidence}
+  PB -> VAL : raw answer + profile
+  VAL -> VOC : concept_id exists and standard?
+  VOC --> VAL : yes / no
+  alt garbage value or invalid concept
+    VAL -> VAL : concept_id := 0\nmapping_status := unmapped
+  else confidence < 0.8
+    VAL -> Eng : add to review queue
+  end
+  VAL --> ETL : y
+  ETL -> CDM : INSERT *_concept_id = y.concept_id,\n*_source_value = X.source_value
+end
+ETL --> Eng : mapping report + DQD run
+@enduml

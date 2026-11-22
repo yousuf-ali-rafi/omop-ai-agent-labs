@@ -1,0 +1,39 @@
+@startuml 04_activity
+title OMOP-MapAgent – Activity diagram of the end-to-end pipeline
+start
+:Receive raw source value X\n(database, source_table, source_field, source_value);
+partition "Stage 1 – Data understanding (rules)" {
+  :Route source_field to OMOP domain\n(Gender, Race, Visit, Condition, Drug, Measurement);
+  :Clean value (spaces, case,\nprefixes "Dx:", suffixes "(confirmed)");
+  if (Value is garbage?\n(#REF!, N/A, 44562, empty)) then (yes)
+    :y := concept_id 0\n"No matching concept";
+    :Keep raw text in *_source_value;
+    stop
+  else (no)
+  endif
+}
+partition "Stage 2 – Retrieval + prompt building" {
+  :Embed X (all-MiniLM-L6-v2);
+  :Query ChromaDB for 3 nearest (X, y) examples;
+  :Build augmented prompt\n(system prompt + 3 examples + X);
+}
+partition "Stage 3 – Inference + reasoning (GAI)" {
+  :Gemini generates JSON\n(cleaned_value, reasoning, concept, confidence);
+}
+partition "Stage 4 – Output generation + validation" {
+  if (Valid JSON and concept exists\nin ATHENA as standard?) then (yes)
+    if (confidence >= 0.8?) then (yes)
+      :Accept mapping;
+    else (no)
+      :Send to human review queue;
+      :Reviewer approves / corrects;
+      :Add approved pair to ChromaDB;
+    endif
+  else (no)
+    :y := concept_id 0, status unmapped;
+  endif
+  :Write OMOP row\n(*_concept_id, *_source_value);
+}
+:Run Data Quality Dashboard;
+stop
+@enduml

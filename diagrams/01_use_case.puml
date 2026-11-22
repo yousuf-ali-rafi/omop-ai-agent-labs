@@ -1,0 +1,47 @@
+@startuml 01_use_case
+title OMOP-MapAgent – Use case diagram (GAI in the ETL product)
+left to right direction
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor<<GAI>> #FDE68A
+  BorderColor<<GAI>> #B45309
+}
+
+actor "ETL Data Engineer" as Eng
+actor "Clinical Terminology\nReviewer" as Rev
+actor "Researcher\n(OHDSI analyst)" as Res
+actor "Gemini LLM\n(Google API)" as LLM <<system>>
+actor "Source systems\n(Kaggle EHR, Synthea,\nLT kidney registry)" as Src <<system>>
+
+rectangle "OMOP ETL Platform with GenAI mapping" {
+  usecase "Load raw source data\ninto staging" as UC1
+  usecase "Profile source values\n(WhiteRabbit)" as UC2
+  usecase "Map source value\nto standard concept" as UC3 <<GAI>>
+  usecase "Retrieve similar\nverified mappings (RAG)" as UC4 <<GAI>>
+  usecase "Explain mapping +\nconfidence score" as UC5 <<GAI>>
+  usecase "Review low-confidence\nmappings" as UC6
+  usecase "Apply fallback rule\n(concept_id = 0)" as UC7
+  usecase "Write OMOP CDM v5.4\ntables (T-SQL)" as UC8
+  usecase "Run Data Quality\nDashboard" as UC9
+  usecase "Run cohort / patient-level\nprediction studies" as UC10
+}
+
+Src --> UC1
+Eng --> UC1
+Eng --> UC2
+Eng --> UC3
+UC3 .> UC4 : <<include>>
+UC3 .> UC5 : <<include>>
+UC7 .> UC3 : <<extend>>
+UC3 --> LLM
+Rev --> UC6
+UC6 .> UC5 : <<include>>
+Eng --> UC8
+Eng --> UC9
+Res --> UC10
+UC10 ..> UC8 : uses CDM
+
+legend right
+  Yellow = use case performed by Generative AI
+endlegend
+@enduml

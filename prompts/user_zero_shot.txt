@@ -1,0 +1,5 @@
+Map the following source value to a standard OMOP CDM concept.
+
+X = {x_json}
+
+Return y as JSON in the required format.

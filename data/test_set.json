@@ -1,0 +1,722 @@
+[
+  {
+    "id": "test_001",
+    "X": {
+      "database": "omop_1",
+      "source_table": "stg_healthcare",
+      "source_field": "Medication",
+      "source_value": "Tab. #N/A"
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 0,
+      "concept_name": "No matching concept",
+      "vocabulary_id": "None",
+      "domain_id": "Drug",
+      "mapping_status": "unmapped"
+    }
+  },
+  {
+    "id": "test_002",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "lytis",
+      "source_value": "Vyas"
+    },
+    "y": {
+      "target_table": "PERSON",
+      "target_field": "gender_concept_id",
+      "concept_id": 8507,
+      "concept_name": "MALE",
+      "vocabulary_id": "Gender",
+      "domain_id": "Gender",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_003",
+    "X": {
+      "database": "omop_2",
+      "source_table": "observations",
+      "source_field": "DESCRIPTION",
+      "source_value": "serum albumin"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 3024561,
+      "concept_name": "Albumin [Mass/volume] in Serum or Plasma",
+      "vocabulary_id": "LOINC",
+      "domain_id": "Measurement",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_004",
+    "X": {
+      "database": "omop_1",
+      "source_table": "stg_healthcare",
+      "source_field": "Medical Condition",
+      "source_value": "Dx: asthma"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 317009,
+      "concept_name": "Asthma",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_005",
+    "X": {
+      "database": "omop_2",
+      "source_table": "observations",
+      "source_field": "DESCRIPTION",
+      "source_value": "Body Weight value"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 3025315,
+      "concept_name": "Body weight",
+      "vocabulary_id": "LOINC",
+      "domain_id": "Measurement",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_006",
+    "X": {
+      "database": "omop_2",
+      "source_table": "medications",
+      "source_field": "DESCRIPTION",
+      "source_value": "Rx: Furoseimde 40 MG Oral Tablet"
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 956874,
+      "concept_name": "furosemide",
+      "vocabulary_id": "RxNorm",
+      "domain_id": "Drug",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_007",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "lytis",
+      "source_value": "Mooteris"
+    },
+    "y": {
+      "target_table": "PERSON",
+      "target_field": "gender_concept_id",
+      "concept_id": 8532,
+      "concept_name": "FEMALE",
+      "vocabulary_id": "Gender",
+      "domain_id": "Gender",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_008",
+    "X": {
+      "database": "omop_1",
+      "source_table": "stg_healthcare",
+      "source_field": "Medical Condition",
+      "source_value": "history of kita"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 0,
+      "concept_name": "No matching concept",
+      "vocabulary_id": "None",
+      "domain_id": "Condition",
+      "mapping_status": "unmapped"
+    }
+  },
+  {
+    "id": "test_009",
+    "X": {
+      "database": "omop_2",
+      "source_table": "patients",
+      "source_field": "RACE",
+      "source_value": "African  American"
+    },
+    "y": {
+      "target_table": "PERSON",
+      "target_field": "race_concept_id",
+      "concept_id": 8516,
+      "concept_name": "Black or African American",
+      "vocabulary_id": "Race",
+      "domain_id": "Race",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_010",
+    "X": {
+      "database": "omop_2",
+      "source_table": "observations",
+      "source_field": "DESCRIPTION",
+      "source_value": "LAB - k+"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 3023103,
+      "concept_name": "Potassium [Moles/volume] in Serum or Plasma",
+      "vocabulary_id": "LOINC",
+      "domain_id": "Measurement",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_011",
+    "X": {
+      "database": "omop_2",
+      "source_table": "observations",
+      "source_field": "DESCRIPTION",
+      "source_value": "LAB - glucose [mass/volume] in serum or plasma"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 3004501,
+      "concept_name": "Glucose [Mass/volume] in Serum or Plasma",
+      "vocabulary_id": "LOINC",
+      "domain_id": "Measurement",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_012",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "CHRONIC KIDNEY DISEASE (DISORDER) - chronic"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 46271022,
+      "concept_name": "Chronic kidney disease",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_013",
+    "X": {
+      "database": "omop_2",
+      "source_table": "medications",
+      "source_field": "DESCRIPTION",
+      "source_value": "inj. Prednisone   "
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 1551099,
+      "concept_name": "prednisone",
+      "vocabulary_id": "RxNorm",
+      "domain_id": "Drug",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_014",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "OSTEOARRTHRITIS (DISORDER)"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 80180,
+      "concept_name": "Osteoarthritis",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_015",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "diagnoze",
+      "source_value": "CD   "
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 201820,
+      "concept_name": "Diabetes mellitus",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_016",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "diagnoze",
+      "source_value": "history of CD"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 201820,
+      "concept_name": "Diabetes mellitus",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_017",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "tyrimas",
+      "source_value": "N/A (serum)"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 0,
+      "concept_name": "No matching concept",
+      "vocabulary_id": "None",
+      "domain_id": "Measurement",
+      "mapping_status": "unmapped"
+    }
+  },
+  {
+    "id": "test_018",
+    "X": {
+      "database": "omop_2",
+      "source_table": "encounters",
+      "source_field": "ENCOUNTERCLASS",
+      "source_value": "  ambulatory"
+    },
+    "y": {
+      "target_table": "VISIT_OCCURRENCE",
+      "target_field": "visit_concept_id",
+      "concept_id": 9202,
+      "concept_name": "Outpatient Visit",
+      "vocabulary_id": "Visit",
+      "domain_id": "Visit",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_019",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "DX: T2DM"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 201826,
+      "concept_name": "Type 2 diabetes mellitus",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_020",
+    "X": {
+      "database": "omop_2",
+      "source_table": "medications",
+      "source_field": "DESCRIPTION",
+      "source_value": "  Omeprazole 20 MG Delayed Release Oral Capsule"
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 923645,
+      "concept_name": "omeprazole",
+      "vocabulary_id": "RxNorm",
+      "domain_id": "Drug",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_021",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "apsilankymo_tipas",
+      "source_value": "AMBULATORINĖ  KONSULTACIJA"
+    },
+    "y": {
+      "target_table": "VISIT_OCCURRENCE",
+      "target_field": "visit_concept_id",
+      "concept_id": 9202,
+      "concept_name": "Outpatient Visit",
+      "vocabulary_id": "Visit",
+      "domain_id": "Visit",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_022",
+    "X": {
+      "database": "omop_2",
+      "source_table": "medications",
+      "source_field": "DESCRIPTION",
+      "source_value": "Norvsc"
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 1332418,
+      "concept_name": "amlodipine",
+      "vocabulary_id": "RxNorm",
+      "domain_id": "Drug",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_023",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "diagnoze",
+      "source_value": "history of plaučių uždegimas (suspected)"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 255848,
+      "concept_name": "Pneumonia",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_024",
+    "X": {
+      "database": "omop_2",
+      "source_table": "medications",
+      "source_field": "DESCRIPTION",
+      "source_value": "Norvasc daily"
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 1332418,
+      "concept_name": "amlodipine",
+      "vocabulary_id": "RxNorm",
+      "domain_id": "Drug",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_025",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "tyrimas",
+      "source_value": "  Hemoglobinas"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 3000963,
+      "concept_name": "Hemoglobin [Mass/volume] in Blood",
+      "vocabulary_id": "LOINC",
+      "domain_id": "Measurement",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_026",
+    "X": {
+      "database": "omop_2",
+      "source_table": "medications",
+      "source_field": "DESCRIPTION",
+      "source_value": "24 HR Metfomin 500 MG Extended Release Oral Tablet"
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 1503297,
+      "concept_name": "metformin",
+      "vocabulary_id": "RxNorm",
+      "domain_id": "Drug",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_027",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "pulmonary emphyssema (disorder)"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 255573,
+      "concept_name": "Chronic obstructive lung disease",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_028",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "apsilankymo_tipas",
+      "source_value": "Ambulaorinis"
+    },
+    "y": {
+      "target_table": "VISIT_OCCURRENCE",
+      "target_field": "visit_concept_id",
+      "concept_id": 9202,
+      "concept_name": "Outpatient Visit",
+      "vocabulary_id": "Visit",
+      "domain_id": "Visit",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_029",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "tyrimas",
+      "source_value": "test: gilukozė kraujyje"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 3004501,
+      "concept_name": "Glucose [Mass/volume] in Serum or Plasma",
+      "vocabulary_id": "LOINC",
+      "domain_id": "Measurement",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_030",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "dx - Diaabetes"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 201820,
+      "concept_name": "Diabetes mellitus",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_031",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "lytis",
+      "source_value": "Moetris"
+    },
+    "y": {
+      "target_table": "PERSON",
+      "target_field": "gender_concept_id",
+      "concept_id": 8532,
+      "concept_name": "FEMALE",
+      "vocabulary_id": "Gender",
+      "domain_id": "Gender",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_032",
+    "X": {
+      "database": "omop_2",
+      "source_table": "encounters",
+      "source_field": "ENCOUNTERCLASS",
+      "source_value": "inpatient   "
+    },
+    "y": {
+      "target_table": "VISIT_OCCURRENCE",
+      "target_field": "visit_concept_id",
+      "concept_id": 9201,
+      "concept_name": "Inpatient Visit",
+      "vocabulary_id": "Visit",
+      "domain_id": "Visit",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_033",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "Dg. Atrial fibrillation (disorder)"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 313217,
+      "concept_name": "Atrial fibrillation",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_034",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "diagnoze",
+      "source_value": "Miokardo Infarktas (Confirmed)"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 4329847,
+      "concept_name": "Myocardial infarction",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_035",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "Major deepression disorder (disorder)"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 440383,
+      "concept_name": "Depressive disorder",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_036",
+    "X": {
+      "database": "omop_2",
+      "source_table": "conditions",
+      "source_field": "DESCRIPTION",
+      "source_value": "Myocardial infarction (disorder) (suspected)"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 4329847,
+      "concept_name": "Myocardial infarction",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_037",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "diagnoze",
+      "source_value": "cukrinis diabetas  "
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 201820,
+      "concept_name": "Diabetes mellitus",
+      "vocabulary_id": "SNOMED",
+      "domain_id": "Condition",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_038",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "tyrimas",
+      "source_value": "test: Albuminas"
+    },
+    "y": {
+      "target_table": "MEASUREMENT",
+      "target_field": "measurement_concept_id",
+      "concept_id": 3024561,
+      "concept_name": "Albumin [Mass/volume] in Serum or Plasma",
+      "vocabulary_id": "LOINC",
+      "domain_id": "Measurement",
+      "mapping_status": "mapped"
+    }
+  },
+  {
+    "id": "test_039",
+    "X": {
+      "database": "omop_3",
+      "source_table": "registras",
+      "source_field": "diagnoze",
+      "source_value": "  #N/A"
+    },
+    "y": {
+      "target_table": "CONDITION_OCCURRENCE",
+      "target_field": "condition_concept_id",
+      "concept_id": 0,
+      "concept_name": "No matching concept",
+      "vocabulary_id": "None",
+      "domain_id": "Condition",
+      "mapping_status": "unmapped"
+    }
+  },
+  {
+    "id": "test_040",
+    "X": {
+      "database": "omop_2",
+      "source_table": "medications",
+      "source_field": "DESCRIPTION",
+      "source_value": "  Glucophage"
+    },
+    "y": {
+      "target_table": "DRUG_EXPOSURE",
+      "target_field": "drug_concept_id",
+      "concept_id": 1503297,
+      "concept_name": "metformin",
+      "vocabulary_id": "RxNorm",
+      "domain_id": "Drug",
+      "mapping_status": "mapped"
+    }
+  }
+]

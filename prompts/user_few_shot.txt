@@ -1,0 +1,9 @@
+Map the following source value to a standard OMOP CDM concept.
+Here are solved examples from the same ETL project. Follow the same format and conventions.
+
+{examples}
+
+Now solve the new case:
+X = {x_json}
+
+Return y as JSON in the required format.

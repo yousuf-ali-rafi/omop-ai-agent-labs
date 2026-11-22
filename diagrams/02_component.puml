@@ -1,0 +1,58 @@
+@startuml 02_component
+title OMOP-MapAgent – Component diagram (where GAI sits in the system)
+skinparam componentStyle rectangle
+skinparam component {
+  BackgroundColor<<GAI>> #FDE68A
+  BorderColor<<GAI>> #B45309
+}
+
+package "Source layer" {
+  database "omop_1 source\nKaggle EHR CSV" as S1
+  database "omop_2 source\nSynthea CSV" as S2
+  database "omop_3 source\nLT kidney-biopsy registry (xlsx)" as S3
+}
+
+package "MS SQL Server" {
+  database "Staging tables\n(stg_healthcare, ...)" as STG
+  database "OMOP CDM v5.4\nomop_1 / omop_2 / omop_3" as CDM
+  database "ATHENA vocabularies\n(CONCEPT, CONCEPT_RELATIONSHIP)" as VOC
+}
+
+package "OMOP-MapAgent (Python service)" {
+  [Data Understanding\n(rules: domain routing,\ncleaning, garbage flags)] as DU
+  [Retriever] as RET <<GAI>>
+  database "ChromaDB\nvector store\n(1,200+ verified mappings)" as VDB
+  [Embedding model\nall-MiniLM-L6-v2] as EMB <<GAI>>
+  [Prompt Builder\n(Lab 1.4 templates)] as PB
+  [Validator +\nfallback rule] as VAL
+  [Mapping Review Queue] as RQ
+}
+
+cloud "Google Gemini API" {
+  [Gemini LLM] as LLM <<GAI>>
+}
+
+package "OHDSI tools" {
+  [Data Quality Dashboard] as DQD
+  [ATLAS / HADES PLP] as ATLAS
+}
+
+S1 --> STG : ETL extract
+S2 --> STG
+S3 --> STG
+STG --> DU : distinct source values (X)
+DU --> RET
+RET --> EMB : embed X
+RET --> VDB : top-3 similar
+DU --> PB
+RET --> PB : 3 examples
+PB --> LLM : augmented prompt
+LLM --> VAL : JSON answer
+VAL --> VOC : check concept_id exists\nand is standard
+VAL --> RQ : confidence < 0.8
+VAL --> STG : code_to_standard table (y)
+RQ --> VDB : approved mappings\nadded as new examples
+STG --> CDM : T-SQL INSERT\n(*_concept_id, *_source_value)
+CDM --> DQD
+CDM --> ATLAS
+@enduml

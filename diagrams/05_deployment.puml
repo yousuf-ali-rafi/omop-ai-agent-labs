@@ -1,0 +1,33 @@
+@startuml 05_deployment
+title OMOP-MapAgent – Deployment at the target company
+node "Company data centre / hospital network" {
+  node "MS SQL Server" {
+    database "Staging + OMOP CDM v5.4" as CDM
+    database "ATHENA vocabularies" as VOC
+  }
+  node "ETL server (Docker)" {
+    artifact "T-SQL ETL scripts" as ETL
+    artifact "OMOP-MapAgent service\n(Python, FastAPI)" as AGENT
+    database "ChromaDB (persistent)" as VDB
+  }
+  node "OHDSI Broadsea (Docker)" {
+    artifact "ATLAS / WebAPI" as ATLAS
+    artifact "Data Quality Dashboard" as DQD
+  }
+}
+cloud "Google Cloud" {
+  node "Gemini API\n(only de-identified\nsource terms are sent)" as GEM #FDE68A
+}
+ETL --> AGENT : HTTP /map
+AGENT --> VDB
+AGENT --> GEM : HTTPS (API key from secret store)
+AGENT --> VOC
+ETL --> CDM
+ATLAS --> CDM
+DQD --> CDM
+note bottom of GEM
+  Privacy: only the distinct source term
+  (e.g. "Arterinė hipertenzija") is sent,
+  never patient identifiers or dates.
+end note
+@enduml

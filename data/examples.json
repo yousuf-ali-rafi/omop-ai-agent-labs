@@ -1,0 +1,102 @@
+{
+  "description": "Lab 1.2 – hand-picked (X, y) examples for the OMOP concept-mapping AI agent. X is one raw source value from one of the three thesis databases; y is the standard OMOP CDM v5.4 concept the ETL writes into the target *_concept_id column (concept_id 0 = 'No matching concept', the raw value is kept in *_source_value). Synthetic examples; no real patient data.",
+  "omop_cdm_version": "5.4",
+  "databases": {
+    "omop_1": "Kaggle healthcare EHR dataset (staging table stg_healthcare)",
+    "omop_2": "Synthea synthetic patients (CSV export)",
+    "omop_3": "Lithuanian kidney-biopsy registry (Lithuanian column names and terms)"
+  },
+  "examples": [
+    {
+      "id": "ex_1.2_01",
+      "layer": "ETL standardization – demographics",
+      "X": {"database": "omop_1", "source_table": "stg_healthcare", "source_field": "Gender", "source_value": "Male"},
+      "y": {"target_table": "PERSON", "target_field": "gender_concept_id", "concept_id": 8507, "concept_name": "MALE", "vocabulary_id": "Gender", "domain_id": "Gender", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_02",
+      "layer": "ETL standardization – demographics (Lithuanian)",
+      "X": {"database": "omop_3", "source_table": "registras", "source_field": "lytis", "source_value": "Moteris"},
+      "y": {"target_table": "PERSON", "target_field": "gender_concept_id", "concept_id": 8532, "concept_name": "FEMALE", "vocabulary_id": "Gender", "domain_id": "Gender", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_03",
+      "layer": "ETL standardization – condition",
+      "X": {"database": "omop_1", "source_table": "stg_healthcare", "source_field": "Medical Condition", "source_value": "Hypertension"},
+      "y": {"target_table": "CONDITION_OCCURRENCE", "target_field": "condition_concept_id", "concept_id": 316866, "concept_name": "Hypertensive disorder", "vocabulary_id": "SNOMED", "domain_id": "Condition", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_04",
+      "layer": "ETL standardization – condition (Lithuanian)",
+      "X": {"database": "omop_3", "source_table": "registras", "source_field": "diagnoze", "source_value": "Lėtinė inkstų liga"},
+      "y": {"target_table": "CONDITION_OCCURRENCE", "target_field": "condition_concept_id", "concept_id": 46271022, "concept_name": "Chronic kidney disease", "vocabulary_id": "SNOMED", "domain_id": "Condition", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_05",
+      "layer": "ETL standardization – condition (Synthea)",
+      "X": {"database": "omop_2", "source_table": "conditions", "source_field": "DESCRIPTION", "source_value": "Diabetes mellitus type 2 (disorder)"},
+      "y": {"target_table": "CONDITION_OCCURRENCE", "target_field": "condition_concept_id", "concept_id": 201826, "concept_name": "Type 2 diabetes mellitus", "vocabulary_id": "SNOMED", "domain_id": "Condition", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_06",
+      "layer": "ETL standardization – medication (brand name to ingredient)",
+      "X": {"database": "omop_1", "source_table": "stg_healthcare", "source_field": "Medication", "source_value": "Lipitor"},
+      "y": {"target_table": "DRUG_EXPOSURE", "target_field": "drug_concept_id", "concept_id": 1545958, "concept_name": "atorvastatin", "vocabulary_id": "RxNorm", "domain_id": "Drug", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_07",
+      "layer": "ETL standardization – medication (international name)",
+      "X": {"database": "omop_1", "source_table": "stg_healthcare", "source_field": "Medication", "source_value": "Paracetamol"},
+      "y": {"target_table": "DRUG_EXPOSURE", "target_field": "drug_concept_id", "concept_id": 1125315, "concept_name": "acetaminophen", "vocabulary_id": "RxNorm", "domain_id": "Drug", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_08",
+      "layer": "ETL standardization – measurement",
+      "X": {"database": "omop_2", "source_table": "observations", "source_field": "DESCRIPTION", "source_value": "Creatinine [Mass/volume] in Serum or Plasma"},
+      "y": {"target_table": "MEASUREMENT", "target_field": "measurement_concept_id", "concept_id": 3016723, "concept_name": "Creatinine [Mass/volume] in Serum or Plasma", "vocabulary_id": "LOINC", "domain_id": "Measurement", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_09",
+      "layer": "ETL standardization – measurement (Lithuanian)",
+      "X": {"database": "omop_3", "source_table": "registras", "source_field": "tyrimas", "source_value": "Kreatininas"},
+      "y": {"target_table": "MEASUREMENT", "target_field": "measurement_concept_id", "concept_id": 3016723, "concept_name": "Creatinine [Mass/volume] in Serum or Plasma", "vocabulary_id": "LOINC", "domain_id": "Measurement", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_10",
+      "layer": "ETL standardization – visit",
+      "X": {"database": "omop_1", "source_table": "stg_healthcare", "source_field": "Admission Type", "source_value": "Emergency"},
+      "y": {"target_table": "VISIT_OCCURRENCE", "target_field": "visit_concept_id", "concept_id": 262, "concept_name": "Emergency Room and Inpatient Visit", "vocabulary_id": "Visit", "domain_id": "Visit", "mapping_status": "mapped"}
+    },
+    {
+      "id": "ex_1.2_11",
+      "layer": "Data quality fallback – unknown value",
+      "X": {"database": "omop_1", "source_table": "stg_healthcare", "source_field": "Gender", "source_value": "Unknown"},
+      "y": {"target_table": "PERSON", "target_field": "gender_concept_id", "concept_id": 0, "concept_name": "No matching concept", "vocabulary_id": "None", "domain_id": "Gender", "mapping_status": "unmapped"}
+    },
+    {
+      "id": "ex_1.2_12",
+      "layer": "Data quality fallback – spreadsheet-corrupted value",
+      "X": {"database": "omop_3", "source_table": "registras", "source_field": "lytis", "source_value": "44562"},
+      "y": {"target_table": "PERSON", "target_field": "gender_concept_id", "concept_id": 0, "concept_name": "No matching concept", "vocabulary_id": "None", "domain_id": "Gender", "mapping_status": "unmapped"}
+    },
+    {
+      "id": "ex_1.2_13",
+      "layer": "Data quality fallback – local registry code without ATHENA mapping",
+      "X": {"database": "omop_3", "source_table": "registras", "source_field": "diagnoze", "source_value": "LT-REG-7781"},
+      "y": {"target_table": "CONDITION_OCCURRENCE", "target_field": "condition_concept_id", "concept_id": 0, "concept_name": "No matching concept", "vocabulary_id": "None", "domain_id": "Condition", "mapping_status": "unmapped"}
+    }
+  ],
+  "patient_level_prediction_examples": {
+    "note": "Downstream layer of the thesis (OHDSI Patient-Level Prediction). X = patient feature vector built from OMOP tables, y = binary outcome in a risk window. Same records as sample_omop_data.json.",
+    "examples": [
+      {
+        "X": {"person_source_value": "SYNTHETIC_001", "gender_concept_id": 8507, "year_of_birth": 1978, "inpatient_visits": 1, "outpatient_visits": 4, "emergency_visits": 1, "condition_occurrence_count": 3, "drug_exposure_count": 5, "procedure_occurrence_count": 2, "creatinine_mg_dl": 1.12},
+        "y": {"outcome": 0, "meaning": "no complication / readmission in the follow-up window"}
+      },
+      {
+        "X": {"person_source_value": "SYNTHETIC_002", "gender_concept_id": 8532, "year_of_birth": 1965, "inpatient_visits": 2, "outpatient_visits": 6, "emergency_visits": 2, "condition_occurrence_count": 7, "drug_exposure_count": 9, "procedure_occurrence_count": 3, "creatinine_mg_dl": 1.86},
+        "y": {"outcome": 1, "meaning": "complication / readmission in the follow-up window"}
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+@startuml 00_process_model
+title Preliminary process model – use of AI in the thesis (Lab 1.2)
+skinparam defaultTextAlignment center
+rectangle "Raw clinical sources\nomop_1 Kaggle EHR\nomop_2 Synthea\nomop_3 LT kidney registry" as RAW
+rectangle "1. Data understanding\nWhiteRabbit profiling,\nstaging tables" as P1
+rectangle "2. AI concept mapping\n(LLM agent)\nX = source value\ny = standard concept_id" as P2 #FDE68A
+rectangle "3. Data-quality fallback\nunmapped -> concept_id 0\nkeep *_source_value" as P3
+rectangle "4. ETL load (T-SQL)\nOMOP CDM v5.4\nMS SQL Server" as P4
+rectangle "5. Data Quality Dashboard\n(OHDSI DQD)" as P5
+rectangle "6. AI / ML prediction\n(HADES PLP)\nX = patient features\ny = outcome 0/1" as P6 #FDE68A
+rectangle "Results for researchers\nand clinicians" as OUT
+
+RAW -right-> P1
+P1 -right-> P2
+P2 -down-> P3
+P3 -left-> P4
+P4 -left-> P5
+P5 -down-> P6
+P6 -right-> OUT
+P5 .up.> P2 : feedback:\nfix mappings
+legend right
+  Yellow boxes = AI components
+endlegend
+@enduml
